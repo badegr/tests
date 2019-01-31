@@ -74,8 +74,8 @@ public class GiphyBrowseSteps {
 	@When("^I press sign out$")
 	public void logout() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		By logoutLinkId = By.className("imgFull");
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(logoutLinkId));
+		By logoutLinkId = By.id("Logout");
+		wait.until(ExpectedConditions.elementToBeClickable(logoutLinkId));
 
 		WebElement logoutLink = driver.findElement(logoutLinkId);
 		logoutLink.click();
@@ -111,8 +111,8 @@ public class GiphyBrowseSteps {
 		// wait until the result has been received
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		By gif = By.className("imgFull");
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(gif));
-
+		wait.until(ExpectedConditions.elementToBeClickable(gif));
+		
 		WebElement gifElement = driver.findElement(gif);
 		String url = gifElement.getAttribute("src");
 		assertTrue(url.endsWith(".gif"));
